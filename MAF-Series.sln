@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.02.Console", "src\MAF.0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.02.AzureAiAgentPersistent.Console", "src\MAF.02.AzureAiAgentPersistent.Console\MAF.02.AzureAiAgentPersistent.Console.csproj", "{D153733F-5BA5-43FF-804D-BCD52914A016}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.Functions", "03.Functions", "{3F0B3ED1-8756-4D07-8970-EB8CDDDA6BAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MAF.03.Functions.Api", "src\MAF.03.Functions.Api\MAF.03.Functions.Api.csproj", "{229BEE91-9A03-4A2E-89EA-577BB0F16A81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,7 @@ Global
 		{1488D280-E006-4A56-A368-58E5970C9CB9} = {0C46FBF8-9302-42AF-83DA-4C66307B7CDF}
 		{21810F46-6253-459F-839F-820871288DF0} = {15D4B68A-E817-4381-BC4B-72732621313A}
 		{D153733F-5BA5-43FF-804D-BCD52914A016} = {15D4B68A-E817-4381-BC4B-72732621313A}
+		{229BEE91-9A03-4A2E-89EA-577BB0F16A81} = {3F0B3ED1-8756-4D07-8970-EB8CDDDA6BAC}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{1488D280-E006-4A56-A368-58E5970C9CB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -45,5 +50,9 @@ Global
 		{D153733F-5BA5-43FF-804D-BCD52914A016}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D153733F-5BA5-43FF-804D-BCD52914A016}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D153733F-5BA5-43FF-804D-BCD52914A016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{229BEE91-9A03-4A2E-89EA-577BB0F16A81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229BEE91-9A03-4A2E-89EA-577BB0F16A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229BEE91-9A03-4A2E-89EA-577BB0F16A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229BEE91-9A03-4A2E-89EA-577BB0F16A81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
