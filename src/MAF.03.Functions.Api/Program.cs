@@ -57,14 +57,13 @@ AIAgent CreateAgent(bool requireApproval)
     }
 
     return chatClient
-        .AsIChatClient()
-        .CreateAIAgent(
+        .AsIChatClient().AsAIAgent(
         instructions: "You are a helpful assistant.",
         tools: [tool]
     );
 }
 
-var threads = new Dictionary<string, AgentThread>();
+var threads = new Dictionary<string, AgentSession>();
 
 app.MapPost("/api/chat", async (
     [FromBody] ChatRequest request) =>
@@ -73,7 +72,7 @@ app.MapPost("/api/chat", async (
     {
         var agent = CreateAgent(request.RequireApproval);
         
-        AgentThread thread;
+        AgentSession thread;
         string threadId;
 
         if (!string.IsNullOrWhiteSpace(request.ThreadId) &&
@@ -84,7 +83,7 @@ app.MapPost("/api/chat", async (
         }
         else
         {
-            thread = agent.GetNewThread();
+            thread = await agent.GetNewSessionAsync();
             threadId = Guid.NewGuid().ToString();
             threads[threadId] = thread;
         }
