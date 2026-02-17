@@ -1,0 +1,6 @@
+@_06.Memory_HostAddress = http://localhost:5076
+
+GET {{_06.Memory_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
