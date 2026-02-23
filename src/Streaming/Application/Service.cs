@@ -38,6 +38,20 @@ public class Service(IOptions<AzureAiSettings> options)
             result.Usage.TotalTokenCount.GetValueOrDefault());
     }
     
+    public async Task<RunMessageResult> RunToAgentResponseAsync(string userInput)
+    {
+        var agent = CreateChatClientAgent();
+        var result = await agent.RunStreamingAsync(userInput)
+            .ToAgentResponseAsync();
+        
+        return new RunMessageResult(
+            result.ResponseId!, 
+            result.Text, 
+            result.Usage!.InputTokenCount.GetValueOrDefault(),
+            result.Usage.OutputTokenCount.GetValueOrDefault(), 
+            result.Usage.TotalTokenCount.GetValueOrDefault());
+    }
+    
     public async Task RunStreamingAsync(string userInput, Func<RunUpdateResult, Task> onUpdate)
     {
         var agent = CreateChatClientAgent();
@@ -58,7 +72,6 @@ public class Service(IOptions<AzureAiSettings> options)
             {
                 if (content is UsageContent usageContent)
                 {
-                    // Extrair dados de uso de tokens para monitoramento de custos
                     var tokenUsage = new TokenUsageResult(
                         MessageId: update.MessageId!,
                         InputTokens: usageContent.Details.InputTokenCount ?? 0,

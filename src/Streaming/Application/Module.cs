@@ -26,34 +26,21 @@ public static class Module
 
             var cancellationToken = context.RequestAborted;
 
-            try
-            {
-                await service.RunStreamingAsync(
-                    userInput, async result =>
-                    {
-                        if (cancellationToken.IsCancellationRequested) return;
-                        
-                        try
-                        {
-                            var data = JsonSerializer.Serialize(new 
-                            { 
-                                eventName = result.GetType().Name, 
-                                content = result
-                            }, JsonSerializerOptions.Web);
-                            
-                            await context.Response.WriteAsync($"data: {data}\n\n", cancellationToken);
-                            await context.Response.Body.FlushAsync(cancellationToken);
-                        }
-                        catch (Exception ex) when (ex is InvalidOperationException or OperationCanceledException or ObjectDisposedException)
-                        {
-                            // Conexão encerrada pelo cliente, ignorar
-                        }
-                    });
-            }
-            catch (OperationCanceledException)
-            {
-                // Conexão cancelada pelo cliente
-            }
+            await service.RunStreamingAsync(
+                userInput, async result =>
+                {
+                    if (cancellationToken.IsCancellationRequested) return;
+                    
+                    var data = JsonSerializer.Serialize(new 
+                    { 
+                        eventName = result.GetType().Name, 
+                        content = result
+                    }, JsonSerializerOptions.Web);
+                    
+                    await context.Response.WriteAsync($"data: {data}\n\n", cancellationToken);
+                    await context.Response.Body.FlushAsync(cancellationToken);
+                });
+            await context.Response.CompleteAsync();
         });
     }
 }
