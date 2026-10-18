@@ -14,6 +14,20 @@ Este repositório contém exemplos progressivos de implementação do Microsoft 
 - **Microsoft.Agents.AI** (preview)
 - **Azure OpenAi**
 
+## 🎬 Episódios
+
+| Ep. | Tema | Pasta |
+|-----|------|-------|
+| 01 | Primeiro agente com `ChatClientAgent` | [`src/MAF.01.Console`](src/MAF.01.Console) |
+| 02 | Sessões: salvar e retomar a conversa | [`src/MAF.02.Console`](src/MAF.02.Console) · [`src/MAF.02.AzureAiAgentPersistent.Console`](src/MAF.02.AzureAiAgentPersistent.Console) |
+| 03 | Agente numa API com tool e aprovação humana | [`src/MAF.03.Functions.Api`](src/MAF.03.Functions.Api) |
+| 04 | Middlewares (chat client, agente, function call) | [`src/UsingMiddlewares`](src/UsingMiddlewares) |
+| 05 | Structured Output | [`src/StructuredOutput`](src/StructuredOutput) |
+| 06 | Memória e histórico com vetores | [`Memory`](Memory) |
+| 07 | Streaming de respostas | [`src/Streaming`](src/Streaming) |
+
+Vídeos: [playlist no YouTube](https://www.youtube.com/playlist?list=PLagWy4RVE5D-zG5tHWz5f_Vt8Mp6p1F--)
+
 ## 📂 Estrutura do Projeto
 
 ```
